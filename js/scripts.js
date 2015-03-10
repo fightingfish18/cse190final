@@ -8,8 +8,6 @@ $(function() {
 				questions.push(this.question);
 				answers.push(this.answer);
 			});
-			console.log(questions);
-			console.log(answers);
 			$('#quizQuestions').val(questions);
 			$('#quizAnswers').val(answers);
 		}
