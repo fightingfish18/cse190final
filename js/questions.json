@@ -1,0 +1,14 @@
+[
+	{
+		"question" : "foo",
+		"answer" : "bar"
+	},
+	{
+		"question" : "bat",
+		"answer" : "ball"
+	},
+	{
+		"question" : "lorem",
+		"answer" : "ipsum"
+	}
+]
