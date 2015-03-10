@@ -1,0 +1,55 @@
+.front {
+	border: 2px solid black;
+	padding: 15%;
+}
+
+.center {
+	text-align: center;
+}
+
+.answers, .reveal, .currentCard {
+	margin-top: 2em;
+}
+
+.right, .prevRight {
+	background-color: #44B052;
+}
+
+.wrong, .prevWrong {
+	background-color: #E02828;
+}
+
+.right, .wrong {
+	opacity: .7;
+}
+
+.right:hover, .wrong:hover {
+	opacity: 1;
+	-webkit-transition: opacity 0.5s; /*Safari & Chrome*/
+   transition: opacity 0.5s;
+   -moz-transition: opacity 0.5s; /* Firefox 4 */
+   -o-transition: opacity 0.5s;
+}
+
+.reveal:hover {
+	box-shadow: 1px 0px 20px yellow;
+	-webkit-transition: box-shadow 0.5s; /*Safari & Chrome*/
+   transition: box-shadow 0.5s;
+   -moz-transition: box-shadow 0.5s; /* Firefox 4 */
+   -o-transition: box-shadow 0.5s; /* Opera */
+}
+
+body {
+	padding-top: 70px;
+	background-color: #9A54DA;
+}
+
+.container {
+	background-color: #F7CAE0;
+	padding-bottom: 5em;
+	border-radius: .5em;
+}
+
+.previousTermList {
+	list-style-type: none !important;
+}

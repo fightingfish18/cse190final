@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CSE 190D Flashcard</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+</head>
+<body>
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<span class="navbar-brand">Flash Card Challenge - William Smyth May And Bryan Wicker</span>
+	</div>
+	<div class='container'>
+		<div class='row center'>
+			<div class='col-md-8 currentCard'>
+				<div class="front center">front of card</div>
+				<div class="back hidden center">Back of card</div>
+				<button class="reveal">Reveal Answer</button>
+			</div>
+
+			<div class="col-md-4 previousTerms">
+				<h2>Previous Terms:</h2>
+				<ol class="previousTermList">
+					
+				</ol>
+			</div>
+		</div>
+		<div class='row'>
+			<div class='col-md-8 center answers'>	
+				<button class="right">I got it Right!</button>
+				<button class="wrong">I got it Wrong</button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<h2>Score: <span class='currentScore'>0</span></h2>
+			</div>
+		</div>
+	</div>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>	
+	<script type="text/javascript" src="js/scripts.js"></script>
+</body>
+</html>
