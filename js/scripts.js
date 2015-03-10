@@ -1,13 +1,15 @@
 $(function() {
 	$.ajax({
 		url : 'js/questions.json',
-		success : function(data) {
+		success : function(response) {
+			response = $.parseJSON(response);
 			var questions = [];
 			var answers = [];
-			$.each(data, function() {
-				questions.push(this.question);
-				answers.push(this.answer);
-			});
+			
+			for (var i = 0; i < response.length; i++) {
+				questions.push(response[i].question);
+				answers.push(response[i].answer);
+			}
 			$('#quizQuestions').val(questions);
 			$('#quizAnswers').val(answers);
 		}

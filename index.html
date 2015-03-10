@@ -4,8 +4,9 @@
 	<title>CSE 190D Flashcard</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/styles.css">
+	<script type="text/javascript" src="Brython/brython.js"></script>
 </head>
-<body>
+<body onload="brython()">
 	<div class="navbar navbar-inverse navbar-fixed-top">
 		<span class="navbar-brand">Flash Card Challenge - William Smyth May And Bryan Wicker</span>
 	</div>
@@ -14,33 +15,86 @@
 	<div class='container'>
 		<div class='row center'>
 			<div class='col-md-8 currentCard'>
-				<div class="front center">front of card</div>
-				<div class="back hidden center">Back of card</div>
-				<button class="reveal">Reveal Answer</button>
+				<div id="cardFront" class="front center">front of card</div>
+				<div id="cardBack" class="back hidden center">Back of card</div>
+				<button id="reveal" class="reveal">Flip Card</button>
 			</div>
 
 			<div class="col-md-4 previousTerms">
 				<h2>Previous Terms:</h2>
-				<ol class="previousTermList">
+				<ol id="previousTerms" class="previousTermList">
 					
 				</ol>
 			</div>
 		</div>
 		<div class='row'>
-			<div class='col-md-8 center answers'>	
-				<button class="right">I got it Right!</button>
-				<button class="wrong">I got it Wrong</button>
+			<div id = "right_wrong"class='col-md-8 hidden center answers'>	
+				<button id ="right" class="right">I got it Right!</button>
+				<button id = "wrong" class="wrong">I got it Wrong</button>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-md-12">
-				<h2>Score: <span class='currentScore'>0</span></h2>
+				<h2>Score: <span id="currentScore" class='currentScore'>0</span></h2>
 			</div>
 		</div>
 	</div>
-	
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>	
 	<script type="text/javascript" src="js/scripts.js"></script>
+	<script type="text/python">
+
+	from browser import alert, document, html
+	questions = ["Foo", "Bat", "Lorem"]
+	answers = ["Bar", "Ball", "Ipsum"]
+	i = 0
+	#initialize the flash card
+	document['cardFront'].innerHTML = questions[0]
+	document['cardBack'].innerHTML = answers[0]
+	for question in questions:
+	   print(question)
+	def flip_to_back():
+	   document['cardFront'].classList.add("hidden")
+	   document['cardBack'].classList.remove("hidden")
+	   document['right_wrong'].classList.remove("hidden")
+	   document['reveal'].classList.add("hidden")
+
+	def flip_to_front():
+	   if getIndex() < len(answers):
+	      document['cardFront'].innerHTML = questions[getIndex()]
+	      document['cardBack'].innerHTML = answers[getIndex()]
+	      document['reveal'].classList.remove("hidden")
+	   else:
+	      document['cardFront'].innerHTML = "End of Questions"
+	   document['cardFront'].classList.remove("hidden")
+	   document['cardBack'].classList.add("hidden")
+	   document['right_wrong'].classList.add("hidden")
+	def correct():
+	   newLi = document.createElement("li")
+	   newLi.innerHTML = questions[getIndex()]
+	   document['previousTerms'].appendChild(newLi).style.color = "green"
+	   score = int(document['currentScore'].innerHTML) + 1
+	   document['currentScore'].innerHTML = str(score) 
+	   flip_to_front()
+
+	def incorrect():
+	   newLi = document.createElement("li")
+	   newLi.innerHTML = questions[getIndex()]
+	   document['previousTerms'].appendChild(newLi).style.color = "red"
+	   flip_to_front()
+
+	def getIndex():
+	   index = len(document['previousTerms'].childNodes)
+	   print (index - 1)
+	   return index - 1
+
+	document['reveal'].bind('click', flip_to_back)
+	document['right'].bind('click', correct)
+	document['wrong'].bind('click', incorrect)
+
+
+	</script>
+
 </body>
 </html>
